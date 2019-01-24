@@ -1,0 +1,302 @@
+@charset "UTF-8";
+//生成单个主题的mixin
+$topTabsWhite:true;
+$leftSlideBlack:true;
+$blackLogoPic:true;
+$blackSkin:false;
+@mixin skinSingle($skin,$mainColor,$mainColorNext){
+  .#{$skin}{
+    .main-header{
+      .navbar{
+        background-color: if($blackLogoPic, #fff, $mainColor);
+        border-bottom:1px solid if($blackLogoPic, #f2f2f2, $mainColor);
+        >li>a{
+          color: #ffffff;
+          line-height:50px;
+          font-size:18px;
+          &:hover,&:focus,&:active{
+            background: rgba(0, 0, 0, 0.1);
+            color: #f6f6f6;
+          }
+        }
+        >.open>a{
+          background: rgba(0, 0, 0, 0.1);
+          color: #f6f6f6;
+          &:hover,&:focus,&:active{
+            background: rgba(0, 0, 0, 0.1);
+            color: #f6f6f6;
+          }
+        }
+        .sidebar-toggle{
+          color: if($blackLogoPic, #333, #fff);
+          font-size:22px;
+          @if($leftSlideBlack){
+            border-right:1px solid $mainColor;
+          }@else{
+            border-right:1px solid if($blackLogoPic, #eee, $mainColorNext);
+          }
+          &:hover{
+            background-color: if($blackLogoPic, #f2f2f2, $mainColor);
+          }
+        }
+      }
+      .logo{
+        background-color: if($blackLogoPic, #fff, $mainColorNext);
+        color: if($blackLogoPic, #444, #fff);
+        border-bottom:1px solid if($blackLogoPic, #f2f2f2, $mainColorNext);
+        &:hover{
+          background-color: if($blackLogoPic, #f2f2f2, $mainColor);
+        }
+        .logo-pic-white,.logo-pic-black{
+          display: none;
+        }
+        .logo-lg{
+          .logo-pic-black{
+            display: if($blackLogoPic, inline-block, none);
+          }
+          .logo-pic-white{
+            display: if($blackLogoPic, none, inline-block);
+          }
+        }
+      }
+      li.user-header{
+        background-color: $mainColorNext;
+      }
+    }
+    .content-header{
+      background: transparent;
+    }
+    .wrapper,.main-sidebar,.left-side{
+      background-color: if($leftSlideBlack,#222d32,#fff);
+    }
+    .content-wrapper{
+      border-left: 1px solid #d2d6de;
+    }
+    .user-panel > .info{
+      color: if($leftSlideBlack,#fff,#444);
+      >a{
+        color: if($leftSlideBlack,#fff,#444);
+      }
+    }
+    .sidebar-menu{
+      >li{
+        -webkit-transition: border-left-color 0.3s ease;
+        -o-transition: border-left-color 0.3s ease;
+        transition: border-left-color 0.3s ease;
+        >a{
+          border-left: 3px solid transparent;
+        }
+        &:hover,&:active{
+          >a{
+            color: #fff;
+            background: if($leftSlideBlack,#1e282c,$mainColor);
+            border-left-color: if($blackSkin,#fff,$mainColor);
+          }
+        }
+        &.header {
+          color: #848484;
+          background: #f9fafc;
+        }
+        &.active {
+          >a{
+            color: #fff;
+            background:if($leftSlideBlack,#1e282c,$mainColor);
+            border-left-color:  if($blackSkin,#fff,$mainColor);
+          }
+        }
+        >.treeview-menu {
+          background-color:if($leftSlideBlack,#2c3b41,#fff);
+        }
+      }
+    }
+    .sidebar{
+      a{
+        color: if($leftSlideBlack,#b8c7ce,#444);
+        &:hover{
+          text-decoration: none;
+        }
+      };
+    }
+    .treeview-menu{
+      >li{
+        >a{
+          color: if($leftSlideBlack,#8aa4af,#444);
+          &:hover{
+            color:if($leftSlideBlack,#fff,$mainColor) ;
+          }
+        }
+        >a.on{
+          color: if($leftSlideBlack,#fff,$mainColor) ;
+          font-weight: bold;
+        }
+        &.active {
+          > a {
+            color: if($leftSlideBlack,#fff,$mainColor) ;
+          }
+        }
+        +li{
+          >a{
+            border-top-color:if($leftSlideBlack,#222d33,#e8e8e8);
+          }
+        }
+      }
+    }
+    .sidebar-form{
+      border-radius: 3px;
+      border: 1px solid #d2d6de;
+      margin: 10px 10px;
+      input[type="text"],.btn{
+        box-shadow: none;
+        background-color: #fff;
+        border: 1px solid transparent;
+        height: 35px;
+      }
+      input[type="text"]{
+        color: #444;
+        border-radius: 2px 0 0 2px;
+        &:focus{
+          background-color: #fff;
+          color: #444;
+          +.input-group-btn .btn{
+            background-color: #fff;
+            color: #444;
+            border-left-color: #fff;
+          }
+        }
+
+      }
+      .btn{
+        color: #999;
+        border-radius:0 2px 2px 0;
+      }
+    }
+    .main-footer{
+      border-top-color: #d2d6de;
+    }
+    .sidebar{
+      border-color: if($leftSlideBlack,#222d32,#eee);
+    }
+    .content-tabs{
+      background-color:if($topTabsWhite,#fff,$mainColor);
+      border-bottom: 1px solid if($topTabsWhite,#eee,$mainColor);
+      .roll-left{
+        border-right: 1px solid if($topTabsWhite,#eee,$mainColorNext);
+      }
+      .roll-nav{color: if($topTabsWhite,#333,#eee);background-color: if($topTabsWhite,#fff,$mainColor)}
+      .page-tabs{
+        a{
+          border-right:1px solid if($topTabsWhite,#eee,$mainColorNext);
+          color:if($topTabsWhite,#333,#eee);
+          &.active{color:if($topTabsWhite,$mainColor,#fff);background-color:if($topTabsWhite,#f2f2f2,$mainColorNext);}
+          i:hover{opacity: 0.8;color:if($topTabsWhite,$mainColor,#fff);}
+        }
+      }
+    }
+    .pace {
+      .pace-progress{
+        background:$mainColor;
+      }
+      .pace-activity{
+        border-top-color:$mainColor;
+        border-left-color:$mainColor;
+      }
+      .pace-progress-inner{
+        box-shadow: 0 0 10px $mainColor, 0 0 5px $mainColor;
+      }
+    }
+    .surper-progress{
+      border-color:$mainColor;
+      border-bottom-color: transparent;
+    }
+    .layer-ext-moon{
+      .layui-layer-title{
+        background-color: if($leftSlideBlack,$mainColor,#fff);
+        color:if($leftSlideBlack,#fff,#222);
+      }
+      .layui-layer-setwin a{
+        color:if($leftSlideBlack,#fff,#222);
+      }
+      .layui-layer-setwin a:hover {color: #ff834c;}
+    }
+  }
+  .#{$skin}.layout-top-nav{
+    .main-header{
+      .logo{
+        background-color: $mainColor;
+        color: #ffffff;
+        border-bottom: 0 solid transparent;
+        &:hover{
+          background-color:$mainColor;
+        }
+      }
+    }
+  }
+  @media (max-width: 767px) {
+    .#{$skin} .main-header .navbar {
+      .dropdown-menu li{
+        a{
+          color: inherit;
+          &:hover{
+            background: #367fa9;
+          }
+        }
+        &.divider {
+          background-color: rgba(255, 255, 255, 0.1);
+        }
+      }
+      .sidebar-toggle{
+        border-right: 1px solid if($blackLogoPic, #eee, $mainColorNext);
+      }
+    }
+  }
+  @media (min-width: 768px) {
+    .#{$skin}.sidebar-mini.sidebar-collapse .sidebar-menu > li > .treeview-menu {
+      border-left: 1px solid #d2d6de;
+    }
+  }
+}
+
+$skins: (
+        (name: 'skin-blue', mainColor: #ff834c, mainColorNext: #ff834c),
+        (name: 'skin-black', mainColor: #333, mainColorNext: #222),
+        (name: 'skin-purple', mainColor: #605ca8, mainColorNext: #555299),
+        (name: 'skin-green', mainColor: #18bc9c, mainColorNext: #15a589),
+        (name: 'skin-red', mainColor: #dd4b39, mainColorNext: #d33724),
+        (name: 'skin-yellow', mainColor: #f39c12, mainColorNext: #db8b0b),
+        (name: 'skin-blue-light', mainColor: #609ee9, mainColorNext: #377aca),
+        (name: 'skin-black-light', mainColor: #222d32, mainColorNext: #222),
+        (name: 'skin-purple-light', mainColor: #605ca8, mainColorNext: #555299),
+        (name: 'skin-green-light', mainColor: #18bc9c, mainColorNext: #15a589),
+        (name: 'skin-red-light', mainColor: #dd4b39, mainColorNext: #d33724),
+        (name: 'skin-yellow-light', mainColor: #f39c12, mainColorNext: #db8b0b),
+);
+
+@for $i from 1 through length($skins) {
+  $item: nth($skins, $i);
+  /*
+   * Skin: 分割线
+   * ------------------------------- -------------------------------
+   */
+  $skinName:map-get($item,name);
+  @if ($skinName=='skin-blue') {
+    $blackLogoPic:true;
+    $leftSlideBlack:false;
+    $topTabsWhite:true;
+    $blackSkin:false;
+  }@else if($skinName=='skin-black' or $skinName=='skin-purple' or $skinName=='skin-green' or $skinName=='skin-red' or $skinName=='skin-yellow' ){
+    $blackLogoPic:false;
+    $leftSlideBlack:true;
+    $topTabsWhite:true;
+    $blackSkin:false;
+    @if($skinName=='skin-black'){
+      $blackSkin:true;
+    }
+  }@else{
+    $blackLogoPic:false;
+    $leftSlideBlack:false;
+    $topTabsWhite:false;
+    $blackSkin:false;
+  }
+  @include skinSingle(map-get($item,name),map-get($item,mainColor),map-get($item,mainColorNext));
+}
+
